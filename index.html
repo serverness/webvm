@@ -34,15 +34,6 @@
     <link rel="stylesheet" href="./xterm/xterm.css" />
     <link rel="stylesheet" href="./scrollbar.css" />
     <style>.github-fork-ribbon:before { background-color: #ea1e69; }</style>
-<style>@font-face {
-  font-family: 'ServerMono-Regular';
-  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/688a6d23-53d6-4bd8-8325-40a0593ab179.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'ServerMono-Regular-Italic';
-  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/59c9ae9b-b36f-4fd7-a590-639cf698a295.woff') format('woff');
-}</style>
     <!-- Serviceworker script that adds the COI and CORS headers to the response headers in cases where the server does not support it. -->
     <script src="serviceWorker.js"></script>
     <script src="./xterm/xterm.js"></script>
@@ -57,7 +48,7 @@
     <div>
       <div style="padding-top: 0.7em;padding-bottom: 0.7em;font-size: 0.3em; font-weight: 200;vertical-align:center;height: 120px;">
         <div style="margin-left: 20px; height: 100%; display: flex; align-items: center; justify-content: space-between;">
-          <pre style="font-family: ServerMono-Regular; font-weight: 600; font-size: large; color: #ad7fa8;">
+          <pre style="font-family: monospace; font-weight: 600; font-size: large; color: #ad7fa8;">
 
 __      __   _  __   ____  __
 \ \    / /__| |_\ \ / /  \/  |
@@ -220,7 +211,7 @@ __      __   _  __   ____  __
 	var consoleDiv = document.getElementById("console");
 
 	//xterm.js related logic
-	var term = new Terminal({cursorBlink:true,convertEol:true, fontFamily:"ServerMono-Regular", fontWeight: 400, fontWeightBold: 700});
+	var term = new Terminal({cursorBlink:true,convertEol:true, fontFamily:"monospace", fontWeight: 400, fontWeightBold: 700});
 	var fitAddon = new FitAddon.FitAddon();
 	term.loadAddon(fitAddon);
 	var linkAddon = new WebLinksAddon.WebLinksAddon();
