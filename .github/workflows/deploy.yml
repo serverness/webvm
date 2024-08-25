@@ -115,7 +115,7 @@ jobs:
       # Build the i386 Dockerfile image.
       # - run: docker build . --tag $TAG --file ${{ github.event.inputs.DOCKERFILE_PATH }} --platform=i386
       - name: Build
-        uses: docker/build-and-push@v6
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: false
