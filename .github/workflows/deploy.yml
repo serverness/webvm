@@ -111,6 +111,12 @@ jobs:
 
       # Create directory to host the image from.
       - run: sudo mkdir -p $DEPLOY_DIR
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          platforms: linux/i386
 
       # Build the i386 Dockerfile image.
       # - run: docker build . --tag $TAG --file ${{ github.event.inputs.DOCKERFILE_PATH }} --platform=i386
