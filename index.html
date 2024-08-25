@@ -278,7 +278,7 @@ __      __   _  __   ____  __
 			return;
 		}
 
-		let networkInterface = setupNetworkInterface();
+		// let networkInterface = setupNetworkInterface();
 
 		async function runTest(cx)
 		{
@@ -296,7 +296,7 @@ __      __   _  __   ____  __
 			cx.registerCallback("processCreated", handleProcessCreated);
 			cx.registerCallback("cpuActivity", cpuCallback);
 			cx.registerCallback("diskActivity", hddCallback);
-			registerNetworkLogin(cx, networkInterface);
+			// registerNetworkLogin(cx, networkInterface);
 
 			term.scrollToBottom();
 
@@ -328,7 +328,7 @@ __      __   _  __   ____  __
 			printOnTerm.printError(printOnTerm.getErrorMessage(err));
 		}
 		// The device url and type are replaced by Github Actions.
-		CheerpXApp.create({devices:[{type:DEVICE_TYPE,url:IMAGE_URL,name:"block1"}],mounts:[{type:"ext2",dev:"block1",path:"/"},{type:"cheerpOS",dev:"/app",path:"/app"},{type:"cheerpOS",dev:"/str",path:"/data"},{type:"devs",dev:"",path:"/dev"},{type:"proc",dev:"",path:"/proc"}], networkInterface: networkInterface}).then(runTest, failCallback);
+		CheerpXApp.create({devices:[{type:DEVICE_TYPE,url:IMAGE_URL,name:"block1"}],mounts:[{type:"ext2",dev:"block1",path:"/"},{type:"cheerpOS",dev:"/app",path:"/app"},{type:"cheerpOS",dev:"/str",path:"/data"},{type:"devs",dev:"",path:"/dev"},{type:"proc",dev:"",path:"/proc"}]}).then(runTest, failCallback);
 	}
 	function initialMessage()
 	{
