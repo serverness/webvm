@@ -34,6 +34,15 @@
     <link rel="stylesheet" href="./xterm/xterm.css" />
     <link rel="stylesheet" href="./scrollbar.css" />
     <style>.github-fork-ribbon:before { background-color: #ea1e69; }</style>
+<style>@font-face {
+  font-family: 'ServerMono-Regular';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/688a6d23-53d6-4bd8-8325-40a0593ab179.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'ServerMono-Regular-Italic';
+  src: url('https://intdev-global.s3.us-west-2.amazonaws.com/public/internet-dev/59c9ae9b-b36f-4fd7-a590-639cf698a295.woff') format('woff');
+}</style>
     <!-- Serviceworker script that adds the COI and CORS headers to the response headers in cases where the server does not support it. -->
     <script src="serviceWorker.js"></script>
     <script src="./xterm/xterm.js"></script>
@@ -48,7 +57,7 @@
     <div>
       <div style="padding-top: 0.7em;padding-bottom: 0.7em;font-size: 0.3em; font-weight: 200;vertical-align:center;height: 120px;">
         <div style="margin-left: 20px; height: 100%; display: flex; align-items: center; justify-content: space-between;">
-          <pre style="font-family: monospace; font-weight: 600; font-size: large; color: #ad7fa8;">
+          <pre style="font-family: ServerMono-Regular; font-weight: 600; font-size: large; color: #ad7fa8;">
 
 __      __   _  __   ____  __
 \ \    / /__| |_\ \ / /  \/  |
@@ -78,16 +87,7 @@ __      __   _  __   ____  __
                   <span>HDD </span>
                   <span id="hddactivity" style="margin-left: 7px;">&#x1F7E2;</span>
                 </div>
-		<a id="loginLink" style="user-select: text ;text-decoration: none; height: 100%;">
-		  <div  style="color: white; font-family: montserrat; font-weight: 400; font-size: large; height: 100%; display: flex; align-items: center;">
-                    <div style="position: relative;">
-	              <span style="cursor: pointer" id="networkStatus">Connect via Tailscale </span>
-	              <span style="cursor: pointer; position: absolute; right: 0px; visibility: hidden;" id="ipCopied">Copied! </span>
-                    </div>
-	            <img src="assets/tailscale.svg" height="35px" style="margin-left: 7px;">
-		  </div>
-		</a>
-                <a href="https://discord.gg/yTNZgySKGa" style="text-decoration: none; height: 100%;" target="_blank">
+		                <a href="https://discord.gg/yTNZgySKGa" style="text-decoration: none; height: 100%;" target="_blank">
                   <div style="color: white; font-family: montserrat; font-weight: 400; font-size: large; height: 100%; display: flex; align-items: center;">
                     <span>Join Discord </span>
                     <img src="assets/discord-mark-blue.svg" height="35px" style="margin-left: 7px;">
@@ -220,7 +220,7 @@ __      __   _  __   ____  __
 	var consoleDiv = document.getElementById("console");
 
 	//xterm.js related logic
-	var term = new Terminal({cursorBlink:true,convertEol:true, fontFamily:"monospace", fontWeight: 400, fontWeightBold: 700});
+	var term = new Terminal({cursorBlink:true,convertEol:true, fontFamily:"ServerMono-Regular", fontWeight: 400, fontWeightBold: 700});
 	var fitAddon = new FitAddon.FitAddon();
 	term.loadAddon(fitAddon);
 	var linkAddon = new WebLinksAddon.WebLinksAddon();

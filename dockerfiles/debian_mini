@@ -7,6 +7,7 @@ RUN apt-get -y install apt-utils gcc \
 	patch wamerican ucf manpages \
 	file luajit make lua50 dialog curl \
 	less cowsay netcat-openbsd
+RUN apt-get -y install cmake build-essential
 RUN useradd -m user && echo "user:password" | chpasswd
 COPY --chown=user:user ./examples /home/user/examples
 RUN chmod -R +x  /home/user/examples/lua
@@ -20,9 +21,24 @@ COPY --chown=user:user ./gopnik2/ /home/user/gopnik2
 
 WORKDIR /home/user
 
+RUN apt-get -y install build-essential zlib1g-dev libssl-dev wget
+RUN wget https://github.com/Kitware/CMake/releases/download/v3.27.1/cmake-3.27.1.tar.gz
+RUN tar -zxvf cmake-3.27.1.tar.gz
+WORKDIR cmake-3.27.1
+RUN ./bootstrap
+RUN ls -lah
+RUN make
+RUN make install
+RUN make --version
+
+
+WORKDIR /home/user/gopnik2
+
 RUN mkdir -p ~/.builds/gopnik2
 RUN cmake -B ~/.builds/gopnik2 -DCMAKE_BUILD_TYPE=Release
 RUN cd ~/.builds/gopnik2 && cmake --build . -- -j 10
 RUN ls -s ~/.builds/gopnik2/gop2 /usr/bin
+
+WORKDIR /home/user/
 
 CMD [ "/bin/bash" ]
