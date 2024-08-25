@@ -25,7 +25,7 @@ RUN cmake -B /build/builds/gopnik2 -DCMAKE_BUILD_TYPE=Release
 RUN cd /build/builds/gopnik2 && cmake --build . -- -j 10
 
 
-FROM --platform=i386 i386/debian:buster as builder
+FROM --platform=i386 i386/debian:buster
 
 RUN useradd -m user && echo "user:password" | chpasswd
 WORKDIR /home/user/
