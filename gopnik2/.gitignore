@@ -1,0 +1,9 @@
+/gop2
+/gop2.exe
+*.o
+/.idea
+/.vscode
+.DS_Store
+/gop2*.sav
+build/
+cmake-build-debug/

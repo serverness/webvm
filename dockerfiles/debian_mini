@@ -15,4 +15,14 @@ WORKDIR /home/user/
 # We set env, as this gets extracted by Webvm. This is optional.
 ENV HOME="/home/user" TERM="xterm" USER="user" SHELL="/bin/bash" EDITOR="vim" LANG="en_US.UTF-8" LC_ALL="C"
 RUN echo 'root:password' | chpasswd
+
+COPY --chown=user:user ./gopnik2/ /home/user/gopnik2
+
+WORKDIR /home/user
+
+RUN mkdir -p ~/.builds/gopnik2
+RUN cmake -B ~/.builds/gopnik2 -DCMAKE_BUILD_TYPE=Release
+RUN cd ~/.builds/gopnik2 && cmake --build . -- -j 10
+RUN ls -s ~/.builds/gopnik2/gop2 /usr/bin
+
 CMD [ "/bin/bash" ]
