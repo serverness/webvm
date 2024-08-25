@@ -34,6 +34,8 @@ RUN make --version
 
 WORKDIR /home/user/gopnik2
 
+RUN apt-get -y install git
+
 RUN mkdir -p ~/.builds/gopnik2
 RUN cmake -B ~/.builds/gopnik2 -DCMAKE_BUILD_TYPE=Release
 RUN cd ~/.builds/gopnik2 && cmake --build . -- -j 10
