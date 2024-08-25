@@ -31,6 +31,6 @@ RUN useradd -m user && echo "user:password" | chpasswd
 WORKDIR /home/user/
 ENV HOME="/home/user" TERM="xterm" USER="user" SHELL="/bin/bash" EDITOR="vim" LANG="en_US.UTF-8" LC_ALL="C"
 RUN echo 'root:password' | chpasswd
-COPY --from builder /build/build/gopnik2/gop2 /bin/gop2
+COPY --from=builder /build/build/gopnik2/gop2 /bin/gop2
 
 CMD [ "/bin/bash" ]
