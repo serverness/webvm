@@ -132,14 +132,11 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-            #- run: echo "CONTAINER_ID=$(sudo docker ps -aq)" >> "$GITHUB_ENV"
-      - run: echo "$GITHUB_ENV"
-
       # Run the docker image so that we can export the container.
       # Run the Docker container with the Google Public DNS nameservers: 8.8.8.8, 8.8.4.4
-      - run: docker run --dns 8.8.8.8 --dns 8.8.4.4 -d $TAG
+      - run: docker run --rm --dns 8.8.8.8 --dns 8.8.4.4 -d $TAG
       - run: echo "$(sudo docker ps -aq)"
-      - run: echo "CONTAINER_ID=$(sudo docker ps -aq)" >> "$GITHUB_ENV"
+      - run: echo "CONTAINER_ID=$(sudo docker ps -aq)" >> $GITHUB_ENV
 
       # We extract the CMD, we first need to figure whether the Dockerfile uses CMD or an Entrypoint.
       - name: Extracting CMD / Entrypoint and args
