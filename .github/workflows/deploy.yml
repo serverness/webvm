@@ -113,7 +113,17 @@ jobs:
       - run: sudo mkdir -p $DEPLOY_DIR
 
       # Build the i386 Dockerfile image.
-      - run: docker build . --tag $TAG --file ${{ github.event.inputs.DOCKERFILE_PATH }} --platform=i386
+      # - run: docker build . --tag $TAG --file ${{ github.event.inputs.DOCKERFILE_PATH }} --platform=i386
+      - name: Build
+        uses: docker/build-and-push@v6
+        with:
+          context: .
+          push: false
+          tags: $TAG
+          file: ${{ github.event.inputs.DOCKERFILE_PATH }}
+          platforms: i386
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
       
       # Run the docker image so that we can export the container.
       # Run the Docker container with the Google Public DNS nameservers: 8.8.8.8, 8.8.4.4
