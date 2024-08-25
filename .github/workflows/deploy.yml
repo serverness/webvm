@@ -124,6 +124,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
+          load: true
           push: false
           tags: ${{ env.TAG }}
           file: ${{ github.event.inputs.DOCKERFILE_PATH }}
